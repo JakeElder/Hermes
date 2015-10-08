@@ -1,6 +1,9 @@
 {
   "name": "hermes-server",
   "version": "0.1.0",
+  "repository": "JakeElder/hermes",
+  "author": "Jake Elder <jake@jpeg.me.uk>",
+  "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
     "http-proxy": "^1.11.2",
