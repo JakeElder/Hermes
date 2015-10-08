@@ -1,6 +1,6 @@
 Hermes
 ======
-End point aggregation server. Useful for providing a single url for all of your
+End point aggregation server. useful for providing a single url for all of your
 micro service endpoints.
 
 Usage
@@ -28,7 +28,7 @@ hermes.on('proxy', (method, path, target) => {
 Route Suppliers
 ---------------
 In order to know where to proxy traffic, Hermes needs to be provided with a
-set of routes. This is achieved by instantiating a routeProvider.
+set of routes. This is achieved by instantiating a RouteSupplier.
 
 ### Default Route Suppliers
 Hermes comes with two route suppliers, `Hermes.SimpleRouteSupplier` and
@@ -59,6 +59,28 @@ const routeSupplier = new Hermes.FileSystemRouteSupplier({
   filePath: './node_modules/hermes-server/routes.example.json'
 });
 routeSupplier.getRoutes().then(routes => { console.log(routes) });
+```
+
+### Custom Route Suppliers
+To allow custom generation/retrieval of routes, it is possible to create your
+own RouteSupplier
+```javascript
+const Q = require('q');
+const Route = require('Hermes').Route;
+
+class MyRouteSupplier extends Hermes.RouteSupplier {
+  constructor(options) {
+    super(options);
+  }
+
+  getRoutes() {
+    return Q.promise((resolve) => {
+      fetchRoutesFromSomeService().then((routes) => {
+          resolve(routes.map(data => new Route(data)));
+      });
+    });
+  }
+}
 ```
 
 Route Format
