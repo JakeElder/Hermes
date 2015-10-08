@@ -1,0 +1,26 @@
+{
+  "name": "hermes-server",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "^4.13.3",
+    "http-proxy": "^1.11.2",
+    "lodash": "^3.10.1",
+    "q": "^1.4.1",
+    "strip-json-comments": "^1.0.4"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.2",
+    "mock-fs": "JakeElder/mock-fs#6da31d5f4b4a3a20018d18c640043450539dc4fd",
+    "nock": "^2.10.0",
+    "should": "^7.1.0",
+    "supertest": "^1.1.0"
+  },
+  "scripts": {
+    "test": "NODE_PATH=. ./node_modules/mocha/bin/mocha $(find test -name *-test.js)",
+    "test:unit": "NODE_PATH=. ./node_modules/mocha/bin/mocha $(find test/unit -name *-test.js)",
+    "test:acceptance": "NODE_PATH=. ./node_modules/mocha/bin/mocha $(find test/acceptance -name *-test.js)"
+  },
+  "engines": {
+    "node": "4.1.2"
+  }
+}

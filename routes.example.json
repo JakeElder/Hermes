@@ -1,0 +1,19 @@
+[{
+  // A unique identifier for the route
+  "id": "Test route",
+  // Which methods should be proxied
+  "methods": ["GET", "POST", "PUT", "DELETE"],
+  // The hermes path that should be requested in order to have it proxied to
+  // the target. Supports RegEx's
+  // IE
+  // http://your-hermes-instance.com/test => http://example.com/
+  // http://your-hermes-instance.com/test/thing => http://example.com/thing
+  "pattern": "/test(.*)",
+  // The target that the request should be proxied to. Accepts all values that
+  // url.format accepts https://nodejs.org/api/url.html#url_url_format_urlobj
+  "target": {
+    "protocol": "http",
+    "host": "example.com",
+    "pathname": "/$1"
+  }
+}]
